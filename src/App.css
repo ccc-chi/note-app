@@ -45,6 +45,9 @@ body {
 .app-sidebar-note:hover {
   background-color: #eee;
 }
+.app-sidebar-note.active {
+  background-color: #eee;
+}
 .sidebar-note-title {
   display: flex;
   justify-content: space-between;
@@ -53,5 +56,53 @@ body {
   margin: 10px 0;
 }
 .app-sidebar-note small {
+  color: #999;
+}
+
+.app-main {
+  width: 70%;
+  height: 100vh;
+}
+.app-main-note-edit,
+.app-main-note-preview {
+  height: 50vh;
+}
+.app-main-note-edit {
+  padding: 20px;
+}
+.app-main-note-edit input,
+.app-main-note-edit textarea {
+  display: block;
+  border: 1px solid #ddd;
+  margin-bottom: 20px;
+  width: 100%;
+  height: calc(50vh - 130px);
+  padding: 5px;
+  resize: none;
+  font-size: 16px;
+}
+.app-main-note-edit input {
+  height: 50px;
+  font-size: 2rem;
+}
+.app-main-note-preview {
+  border-top: 1px solid #ddd;
+  overflow-y: scroll;
+  background-color: rgba(255,255,255,0.8);
+}
+.preview-title {
+  padding: 25px 25px 0 25px;
+  margin: 0;
+}
+.markdown-preview {
+  padding: 0 25px 25px 25px;
+  line-height: 2rem;
+}
+.no-active-note {
+  width: 70%;
+  height: 100vh;
+  line-height: 100vh;
+  text-align: center;
+  font-size: 2rem;
   color: #999;
 }
