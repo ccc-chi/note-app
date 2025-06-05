@@ -1,19 +1,27 @@
-import { useState } from 'react';
-import './App.css';
-import { Main } from './components/Main';
-import { Sidebar } from './components/Sidebar';
-import  uuid  from 'react-uuid';
+import { useEffect, useState } from "react";
+import "./App.css";
+import { Main } from "./components/Main";
+import { Sidebar } from "./components/Sidebar";
+import uuid from "react-uuid";
 
 type Note = {
   id: string;
   title: string;
   content: string;
   modDate: number;
-}
+};
 
 function App() {
-  const [notes, setNotes] = useState<Note[]>([])
+  const [notes, setNotes] = useState<Note[]>(() => {
+    const stored = localStorage.getItem("notes");
+    return stored ? JSON.parse(stored) : [];
+  });
   const [activeNote, setActiveNote] = useState<string | undefined>(undefined);
+
+  useEffect(() => {
+    localStorage.setItem("notes", JSON.stringify(notes));
+  }, [notes]);
+
   const onAddNote = () => {
     const newNote = {
       id: uuid(),
@@ -59,4 +67,4 @@ function App() {
   );
 }
 
-export default App
+export default App;
