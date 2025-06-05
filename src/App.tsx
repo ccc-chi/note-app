@@ -13,7 +13,7 @@ type Note = {
 
 function App() {
   const [notes, setNotes] = useState<Note[]>([])
-  const [activeNote, setActiveNote] = useState<string | false>(false);
+  const [activeNote, setActiveNote] = useState<string | undefined>(undefined);
   const onAddNote = () => {
     const newNote = {
       id: uuid(),
@@ -34,6 +34,17 @@ function App() {
     return notes.find((note) => note.id === activeNote);
   };
 
+  const onUpdateNote = (updatedNote: Note) => {
+    const updateNoteArray = notes.map((note) => {
+      if (note.id === updatedNote.id) {
+        return updatedNote;
+      } else {
+        return note;
+      }
+    });
+    setNotes(updateNoteArray);
+  };
+
   return (
     <div className="App">
       <Sidebar
@@ -43,7 +54,7 @@ function App() {
         activeNote={activeNote}
         setActiveNote={setActiveNote}
       />
-      <Main activeNote={getActiveNote()} />
+      <Main activeNote={getActiveNote()} onUpdateNote={onUpdateNote} />
     </div>
   );
 }

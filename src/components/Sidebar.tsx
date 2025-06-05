@@ -9,8 +9,8 @@ type Props = {
     modDate: number;
   }[];
   onDeleteNote: (id: string) => void;
-  activeNote: string | false;
-  setActiveNote: (id: string | false) => void;
+  activeNote: string | undefined;
+  setActiveNote: (id: string | undefined) => void;
 };
 
 export const Sidebar: FC<Props> = (props) => {
