@@ -1,4 +1,5 @@
 import type { FC } from "react";
+import Markdown from "react-markdown";
 
 type Props = {
   activeNote:
@@ -48,7 +49,9 @@ export const Main: FC<Props> = (props) => {
       </div>
       <div className="app-main-note-preview">
         <h1 className="preview-title">{activeNote.title}</h1>
-        <div className="markdown-preview">{activeNote.content}</div>
+        <div className="markdown-preview">
+          <Markdown>{activeNote.content}</Markdown>
+        </div>
       </div>
     </div>
   );
